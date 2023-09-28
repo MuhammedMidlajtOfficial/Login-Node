@@ -5,10 +5,10 @@
     <div class="container w-25 py-5">
         <div class="title">
             <h2 class="font-weight-bold">Login Page</h2>
+            <h4 style="font-size: small;">Login for the existing user</h4>
             <% if(locals.logout){ %>
                 <div class="alert alert-success">Logout Successfull...!</div>
             <% } %> 
-            <h4 style="font-size: small;">Login for the existing user</h4>
         </div>
         <form action="/route/login" method="POST">
             <div class="form-group">
