@@ -26,7 +26,9 @@ app.use('/route',router)
 app.get('/',(req,res)=>{
     res.render('base',{title:"Login Page"})
 })
-
+app.get('/dashboard',(req,res)=>{
+    res.render('dashboard')
+})
 app.listen(3000,()=>{
     console.log('Server started\nhttp://127.0.0.1:3000');
 })
