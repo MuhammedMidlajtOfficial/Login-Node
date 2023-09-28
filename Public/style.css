@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat&display=swap');
+
+body{
+    background-image: url("https://png.pngtree.com/background/20210715/original/pngtree-blue-pink-gradient-background-picture-image_1285876.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+.center-div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100vw;
+}
+.container{
+    border-radius: 5px;
+    border:1px solid rgb(149, 144, 144);
+    padding: 20px;
+    font-family: 'Montserrat', sans-serif;
+}
