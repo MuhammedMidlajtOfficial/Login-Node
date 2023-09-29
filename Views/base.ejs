@@ -6,6 +6,9 @@
         <div class="title">
             <h2 class="font-weight-bold">Login Page</h2>
             <h4 style="font-size: small;">Login for the existing user</h4>
+            <% if(locals.invalidUser){ %>
+                <div class="alert alert-danger">Invalid Email or Password</div>
+            <% } %>
             <% if(locals.logout){ %>
                 <div class="alert alert-success">Logout Successfull...!</div>
             <% } %> 

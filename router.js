@@ -1,4 +1,5 @@
-const express = require('express')
+const express = require('express');
+const auth = require('./auth');
 const router = express.Router();
 
 const credential = {
@@ -6,14 +7,32 @@ const credential = {
     password : '123'
 }
 
+let loggedout = false;
+let invalidId = false;
+
+//HOME 
+
+router.get('/',auth.redirectToDashboard,(req,res)=>{
+    if(loggedout){
+        res.render('./base',{title : "Login Page", logout : true });
+        loggedout = false;
+        invalidId = false;
+        console.log(loggedout);
+    }else if(invalidId){
+        res.render('./base',{ invalidUser : true })
+    }else{
+        res.render('./base',{ invalidUser : false })
+    }
+} )
+
 // LOGIN USER
 router.post('/login',(req,res)=>{
     if(req.body.email === credential.email && req.body.password === credential.password){
         req.session.user = req.body.email;
         res.redirect('/route/dashboard')
-        // res.end('Login Successfull')
     }else{
-        res.end('Invalid Username')
+        invalidId = true;
+        res.redirect('/');
     }
 })
 
@@ -27,13 +46,14 @@ router.get('/dashboard',(req,res)=>{
 })
 
 // LOGOUT
-router.get('/logout',(req,res)=>{
+router.get('/logout',auth.isLogin,(req,res)=>{
     req.session.destroy((err)=>{
         if(err){
             console.log(err);
             res.send('Error');
         }else{
-            res.render('base',{title : "Express", logout : "Redirect to base line-8"});
+            loggedout= true;
+            res.redirect('/')
         }
     })
 })

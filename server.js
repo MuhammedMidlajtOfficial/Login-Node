@@ -24,14 +24,14 @@ app.use(session({
     saveUninitialized : true
 }));
 
+app.use('/',router)
 app.use('/route',router)
+
 //HOME ROUTE
-app.get('/',(req,res)=>{
-    res.render('base',{title:"Login Page"})
-})
-// app.get('/dashboard',(req,res)=>{
-//     res.render('dashboard')
+// app.get('/',(req,res)=>{
+//     res.render('base',{title:"Login Page"})
 // })
-app.listen(3000,()=>{
+
+app.listen(port,()=>{
     console.log('Server started\nhttp://127.0.0.1:3000');
 })
